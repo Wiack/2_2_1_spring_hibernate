@@ -36,8 +36,10 @@ public class MainApp {
         userService.add(user3);
         userService.add(user4);
 
+        userService.add(new User("User5", "Lastname5", "user5@mail.ru", new Car("CarT", 1000)));
 
-        List<User> users = userService.listUsers();
+
+        List<User> users = userService.getListUsers();
 
         for (User user : users) {
             System.out.println("Id = " + user.getId());
@@ -47,7 +49,11 @@ public class MainApp {
             System.out.println();
         }
 
-        System.out.println("Владелец машины:" + userService.getByModAndSer("CarC", 567));
+
+        User user = userService.getByModAndSer("CarC", 567);
+        System.out.println(user.carOwnerToString());
+
+        System.out.println("\nВладелец машины:" + userService.getByModAndSer("CarC", 567));
 
 
         context.close();
